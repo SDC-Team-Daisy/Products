@@ -1,0 +1,23 @@
+{
+  "name": "sdc-products",
+  "version": "1.0.0",
+  "description": "SDC products",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SDC-Team-Daisy/SDC-products.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SDC-Team-Daisy/SDC-products/issues"
+  },
+  "homepage": "https://github.com/SDC-Team-Daisy/SDC-products#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "express": "^4.17.3"
+  }
+}
