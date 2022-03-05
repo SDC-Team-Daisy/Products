@@ -7,7 +7,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('client/dist'));
 
-// app.get('/products', controller.getAllProductsReq);
+app.get('/products', controller.getAllProductsReq);
 app.get('/products/:id', controller.getProductReq);
 app.get('/products/:id/styles', controller.getStylesReq);
 
