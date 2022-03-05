@@ -45,10 +45,19 @@ module.exports = {
               'thumbnail_url', photos.thumbnail_url,
               'url', photos.url)
             )FROM photos WHERE photos.style_id=styles.id
+          ),
+        'skus', (SELECT
+          json_object_agg(
+            skus.id,
+            json_build_object(
+              'quantity', skus.quantity,
+              'size', skus.size)
+            ) FROM skus WHERE skus.style_id=styles.id
           )
         )
-      ) AS results FROM styles WHERE product_id=$1
-   ) FROM styles WHERE product_id=$1`
+      ) AS results FROM styles WHERE styles.product_id=$1
+    ) FROM styles WHERE styles.product_id=$1
+    `
     let queryArgument = [id]
     pool.query(queryString, queryArgument, (err, prod) => {
       callback(err, prod)
@@ -57,12 +66,29 @@ module.exports = {
  }
 
 
-//  'skus', (SELECT
-//   json_build_object(
-//     skus.id,
-//     (SELECT
-//      json_build_object(
-//       'quantity', skus.quantity,
-//       'size', skus.size) FROM skus WHERE skus.style_id=styles.id)
-//     )FROM skus WHERE skus.style_id=styles.id
-//   )
+// SELECT styles.product_id,
+// (SELECT json_agg
+//   (json_build_object
+//     ('style_id', styles.id,
+//     'name', styles.name,
+//     'original_price', styles.original_price,
+//     'sale_price', styles.sale_price,
+//     'default?', styles.default_style,
+//     'photos', (SELECT
+//       json_agg(
+//         json_build_object(
+//           'thumbnail_url', photos.thumbnail_url,
+//           'url', photos.url)
+//         )FROM photos WHERE photos.style_id=styles.id
+//       ),
+//     'skus', (SELECT
+//       json_object_agg(
+//         skus.id,
+//         json_build_object(
+//           'quantity', skus.quantity,
+//           'size', skus.size)
+//         ) FROM skus WHERE skus.style_id=styles.id
+//       )
+//     )
+//   ) AS results FROM styles WHERE styles.product_id=$1
+// ) FROM styles WHERE styles.product_id=$1
