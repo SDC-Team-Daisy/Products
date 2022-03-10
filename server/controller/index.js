@@ -5,6 +5,7 @@ module.exports = {
     model.getAllProducts((err, prod) => {
       if (err) {
         res.sendStatus(500);
+        console.log('error')
       } else {
         res.send(prod);
       }
@@ -15,6 +16,7 @@ module.exports = {
     model.getProduct(req.params.id, (err, prod) => {
       if (err) {
         res.sendStatus(500);
+        console.log('error')
       } else {
         res.send(prod);
       }
@@ -26,6 +28,7 @@ module.exports = {
       if (err) {
         console.log(err)
         res.sendStatus(500);
+        console.log('error')
       } else {
         res.send(prod);
       }

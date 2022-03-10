@@ -1,2 +1,6 @@
 node_modules
 /Data
+newrelic.js
+newrelic_agent.log
+sdcproducts.dump
+/server/model/pgpool.js

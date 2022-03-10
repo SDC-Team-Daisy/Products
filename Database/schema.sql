@@ -55,3 +55,8 @@ ALTER TABLE features ADD CONSTRAINT features_product_id_fkey FOREIGN KEY (produc
 ALTER TABLE styles ADD CONSTRAINT styles_product_id_fkey FOREIGN KEY (product_id) REFERENCES products(id);
 ALTER TABLE photos ADD CONSTRAINT photos_style_id_fkey FOREIGN KEY (style_id) REFERENCES styles(id);
 ALTER TABLE skus ADD CONSTRAINT skus_style_id_fkey FOREIGN KEY (style_id) REFERENCES styles(id);
+
+CREATE INDEX ON features (product_id);
+CREATE INDEX ON photos (style_id);
+CREATE INDEX ON skus (style_id);
+CREATE INDEX ON styles (product_id);

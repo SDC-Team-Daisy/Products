@@ -4,7 +4,7 @@
   "description": "SDC products",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --force-exit --runInBand --config=server/test/jest.config.js",
     "server": "nodemon server/index.js"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.26.0",
     "express": "^4.17.3",
+    "newrelic": "^8.8.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3"
   },
